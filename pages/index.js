@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import styles from '../styles/Home.module.css'
 import { shareKakao } from './kakao/shareKakao';
 import initialize from './kakao/initialize';
+// import AnimationButton from './animation';
+
+const isServer = () => typeof window === 'undefined';
+
+const NoSSRComponent = dynamic(() => import("./animation"), {
+  ssr: false,
+});
 
 export default function Home() {
+
+  var menuList = ['햄버거', '라면', '한식', '중식', '양식', '냉면'];
 
   useEffect(() => {
     // useEffect() 는 초기 빌드에는 실행되지 않으므로
@@ -13,14 +23,14 @@ export default function Home() {
     initialize();
   }, []);
 
-  const menus = ['햄버거', '라면', '한식', '중식', '양식', '냉면'];
-
   // [state(ui 바뀌는)변수, 해당 변수를 갱신하는 함수]
   const [items, setItems] = useState(['눌러서 확인하기']);
   const [links, setLinks] = useState(["https://map.naver.com/v5/search/"]);
+  // const nodeRef = React.useRef(null);
+
 
   const clickHandler = () => {
-    var selected = menus[Math.floor(Math.random() * menus.length)];
+    var selected = menuList[Math.floor(Math.random() * menuList.length)];
     setItems(selected);
     var selectedLink = "https://map.naver.com/v5/search/" + selected;
     setLinks(selectedLink);
@@ -52,15 +62,18 @@ export default function Home() {
           <code onClick={clickHandler} className={styles.code}>{items}</code>
         </p>
 
+        {/* {!isServer() ? <AnimationButton></AnimationButton> : 'null'} */}
+        {/* <NoSSRComponent> */}
+        {/* <AnimationButton></AnimationButton> */}
+        {/* </NoSSRComponent> */}
+
         <div className={styles.grid}>
           <a onClick={clickHandler} className={styles.card}>
             <h2>다시 돌리기 &rarr;</h2>
-            {/* <p>Find in-depth information about Next.js features and API.</p> */}
           </a>
 
           <a href={links} target="_blank" className={styles.card}>
             <h2>검색하기 &rarr;</h2>
-            {/* <p>Learn about Next.js in an interactive course with quizzes!</p> */}
           </a>
           <a onClick={clickHandlerKakao} className={styles.card}>
             <h2>공유하기 &rarr;</h2>
@@ -81,5 +94,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
+
