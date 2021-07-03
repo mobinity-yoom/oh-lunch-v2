@@ -9,7 +9,8 @@ import initialize from './kakao/initialize';
 
 const isServer = () => typeof window === 'undefined';
 
-const NoSSRComponent = dynamic(() => import("./animation"), {
+const NoSSRComponent = dynamic(() => import("./slotMachine"), {
+  loading: () => <p>.....</p>,
   ssr: false,
 });
 
@@ -66,13 +67,14 @@ export default function Home() {
         {/* <NoSSRComponent> */}
         {/* <AnimationButton></AnimationButton> */}
         {/* </NoSSRComponent> */}
+        <NoSSRComponent />
 
         <div className={styles.grid}>
           <a onClick={clickHandler} className={styles.card}>
             <h2>다시 돌리기 &rarr;</h2>
           </a>
 
-          <a href={links} target="_blank" className={styles.card}>
+          <a href={links} target="_blank" className={styles.card} rel="noreferrer">
             <h2>검색하기 &rarr;</h2>
           </a>
           <a onClick={clickHandlerKakao} className={styles.card}>

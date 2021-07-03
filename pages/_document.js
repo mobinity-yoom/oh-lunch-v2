@@ -1,13 +1,13 @@
 // page/_documnet.js
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript, Html } from 'next/document';
 import React from 'react';
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <html>
+      <Html>
         <Head>
-            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+            <script src="https://developers.kakao.com/sdk/js/kakao.js" />
             {/* <script>
                 Kakao.init('96a24fa84b8245d9c5ef14fd911fba9a');
                 console.log(Kakao.isInitialized());
@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
             </div> */}
           {/* </div> */}
         </body>
-      </html>
+      </Html>
     );
   }
 }

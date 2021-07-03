@@ -26,8 +26,8 @@ export default function AnimationButton() {
 }
 
 // if (typeof window != "undefined") {
-    ReactDOM.render(
-        <AnimationButton />,
-        document.getElementById('root')
-    );
+    // ReactDOM.render(
+    //     <AnimationButton />,
+    //     document.getElementById('root')
+    // );
 // }
