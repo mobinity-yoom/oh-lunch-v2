@@ -1,20 +1,31 @@
 import React from "react";
 import styles from '../styles/Home.module.css'
+import { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 
-export default function slotMachine({ target = 0 }) {
+export default function SlotMachine({ target = 0 }) {
+
+    const [isActive, setIsActive] = useState(false);
 
     const wordlist = ["한정식", "국밥", "찜닭", "찌개","비빔밥", "해장국", "쭈꾸미", "김치찜", "도시락", "불고기",
-"월남쌈", "갈비찜", "족발/보쌈", "닭갈비", "생선구이", "탕", "삼계탕", "수제비", "닭볶음탕", "알밥", "제육볶음", "김치볶음밥", "냉면",
-"칼국수", "국수", "김밥", "떡볶이", "순대", "라면", "짬뽕", "볶음밥", "탕수육", "양꼬치",
-"초밥", "돈까스", "우동", "라멘", "연어덮밥", "스테이크", "리조또", "피자", "햄버거", "파스타", "타코/브리또", "샌드위치", "쌀국수", "팟타이"];
+                    "월남쌈", "갈비찜", "족발/보쌈", "닭갈비", "생선구이", "탕", "삼계탕", "수제비", "닭볶음탕", "알밥", "제육볶음", "김치볶음밥", "냉면",
+                    "칼국수", "국수", "김밥", "떡볶이", "순대", "라면", "짬뽕", "볶음밥", "탕수육", "양꼬치",
+                    "초밥", "돈까스", "우동", "라멘", "연어덮밥", "스테이크", "리조또", "피자", "햄버거", "파스타", "타코/브리또", "샌드위치", "토스트", "쌀국수", "팟타이", "치킨"];
 
-    const imgPositionInWheel = idx => -idx * (360 / wordlist.length);
+    var randomshowlist = []
+    // 랜덤하게 4개만 출력
+    for (var i = 0; i < 5; i++) {
+        var randomshow = wordlist[Math.floor(Math.random() * wordlist.length)];
+        randomshowlist.push(randomshow);
+    }
+
+    const imgPositionInWheel = idx => -idx * (360 / randomshowlist.length);
 
     return(
         <motion.div className-="Slot">
-            {wordlist.map((url, idx) => (
+            {randomshowlist.map((url, idx) => (
                 <motion.div
+                    onClick={() => setIsActive(!isActive)}
                     className={styles.stringdiv}
                     key={idx}
                     style={{
@@ -22,13 +33,19 @@ export default function slotMachine({ target = 0 }) {
                         rotateX: imgPositionInWheel(idx),
                     }}
                     animate={{
-                        rotateX: -360 * (target +1 ) + imgPositionInWheel(idx + target),
+                        rotateX: isActive ? -360 * (target + 1) + imgPositionInWheel(idx + target): 0,
+                        opacity: isActive ? 1 : 0.75,
+                        scale: isActive ? 1.5 : 1.5,
                     }}
-                    transition={{ type: "tween", duration: 2 }}
+                    transition={{
+                        type: "tween",
+                        duration: 1,
+                    }}
                 >
                     {url}
                 </motion.div>
-            ))}
+            ))
+            }
         </motion.div>
     )
 }

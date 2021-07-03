@@ -8,6 +8,15 @@
   height: 100vh;
 }
 
+.bgWrap {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+  filter: contrast(60%);
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -45,26 +54,22 @@
 }
 
 .title {
-  margin: 0;
+  margin: 1rem;
   line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
+  font-size: 3.7rem;
+  text-shadow: 4px 2px 2px gray;
   text-align: center;
 }
 
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
+.item {
+  color: rgb(231, 227, 227);
+  margin: 2rem 0 0 0;
+  cursor: pointer;
+  /* border: 3px dotted #050505; */
+  /* border-radius: 5px; */
+  font-size: 3rem;
+  /* font-style: oblique; */
+  text-shadow: 4px 2px 2px rgb(36, 36, 36);
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
@@ -79,12 +84,12 @@
 }
 
 .card {
+  color: black;
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 1.1rem;
   text-align: left;
-  color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 2px solid black;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
@@ -100,8 +105,8 @@
 }
 
 .card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+  margin: 0 0 0 0;
+  font-size: 1.3rem;
   vertical-align: middle;
 }
 
@@ -115,31 +120,6 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
-}
-
-.button_container {
-  margin-bottom: 0.5rem;
-}
-
-.fade-enter .btn {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-.fade-enter-active .btn {
-  opacity: 1;
-  transform: translateX(0%);
-}
-.fade-exit .btn {
-  opacity: 1;
-  transform: translateX(0%);
-}
-.fade-exit-active .btn {
-  opacity: 0;
-  transform: translateX(100%);
-}
-.fade-enter-active .btn,
-.fade-exit-active .btn {
-  transition: opacity 500ms, transform 500ms;
 }
 
 .slottt_machine_recipe {
@@ -172,13 +152,16 @@
 @media (max-width: 600px) {
   .grid {
     width: 100%;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
 
 .stringdiv {
   width: 100%;
   backface-visibility: hidden;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
+  /* min-height: 150px;
+  max-height: 150px; */
+  /* height: 150px; */
 }
