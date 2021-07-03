@@ -3,8 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import styles from '../styles/Home.module.css'
-import { shareKakao } from './kakao/shareKakao';
-import initialize from './kakao/initialize';
+import { shareKakao } from '../lib/kakao/shareKakao';
+import initialize from '../lib/kakao/initialize';
 // import AnimationButton from './animation';
 
 const isServer = () => typeof window === 'undefined';
