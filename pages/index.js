@@ -85,6 +85,9 @@ export default function Home() {
         <div onClick={clickHandler} className={styles.item}>
             {/* {loading? <Loading></Loading>: {items}} */}
             {items}
+            { items == "???" && 
+          <ClickLottie className={styles.clicklottie}></ClickLottie>
+          }
         </div>
         {/* <ClickLottie></ClickLottie> */}
 
@@ -102,21 +105,24 @@ export default function Home() {
             priority
           ></Image>
         </div>
+        
+        {items !== "???" && <>
+          <div className={styles.grid1}>
+            <a onClick={clickHandler} className={styles.card1}>
+              <h2><ReloadLottie></ReloadLottie>한 번 더!</h2>
+            </a>
+          </div>
 
-        <div className={styles.grid1}>
-          <a onClick={clickHandler} className={styles.card1}>
-            <h2><ReloadLottie></ReloadLottie>한 번 더!</h2>
-          </a>
-        </div>
-
-        <div className={styles.grid2}>
-          <a href={links} target="_blank" className={styles.card2} rel="noreferrer">
-            <h2><LocationLottie></LocationLottie>찾아보기</h2>
-          </a>
-          <a onClick={clickHandlerKakao} className={styles.card2}>
-            <h2><ShareLottie></ShareLottie>알려주기</h2>
-          </a>
-        </div>
+          <div className={styles.grid2}>
+            <a href={links} target="_blank" className={styles.card2} rel="noreferrer">
+              <h2><LocationLottie></LocationLottie>찾아보기</h2>
+            </a>
+            <a onClick={clickHandlerKakao} className={styles.card2}>
+              <h2><ShareLottie></ShareLottie>알려주기</h2>
+            </a>
+          </div>
+          </>
+        }
       </main>
 
       {/* <footer className={styles.footer}>
