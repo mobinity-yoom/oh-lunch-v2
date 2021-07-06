@@ -10,6 +10,13 @@ import translator from "../lib/Translator";
 // import initialize from '../lib/kakao/initialize';
 // import AnimationButton from './animation';
 
+// for lotties
+import Lottie from 'react-lottie';
+import ReloadLottie from '../lib/lottie/reload';
+import LocationLottie from '../lib/lottie/location';
+import ShareLottie from '../lib/lottie/share';
+import ClickLottie from '../lib/lottie/click';
+
 const isServer = () => typeof window === 'undefined';
 
 const NoSSRComponent = dynamic(() => import("./slotMachine"), {
@@ -30,12 +37,14 @@ export default function Home() {
   }, []);
 
   // [state(ui 바뀌는)변수, 해당 변수를 갱신하는 함수]
-  const [items, setItems] = useState('👆눌러서 확인하기');
+  const [items, setItems] = useState('???');
   const [links, setLinks] = useState("https://map.naver.com/v5/search/");
   const [imgs, setImgs] = useState("/logo.png");
   const [loading, setLoading] = useState(false);
+  // const [isPaused, SetIsPaused] = useState(false);
 
   const clickHandler = () => {
+    // SetIsPaused(!isPaused);
     setLoading(true);
     const selected = menuList[Math.floor(Math.random() * menuList.length)];
     setItems(selected);
@@ -67,7 +76,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          오늘 점심은 뭐 먹지?
+          오늘 점심은
         </h1>
 
         {/* <NoSSRComponent /> */}
@@ -77,6 +86,11 @@ export default function Home() {
             {/* {loading? <Loading></Loading>: {items}} */}
             {items}
         </div>
+        {/* <ClickLottie></ClickLottie> */}
+
+        <h1 className={styles.title}>
+          어떠세요?
+        </h1>
 
         <div className={styles.bgWrap}>
           <Image 
@@ -89,16 +103,18 @@ export default function Home() {
           ></Image>
         </div>
 
-        <div className={styles.grid}>
-          <a onClick={clickHandler} className={styles.card}>
-            <h2>🔄 다시 돌리기</h2>
+        <div className={styles.grid1}>
+          <a onClick={clickHandler} className={styles.card1}>
+            <h2><ReloadLottie></ReloadLottie>한 번 더!</h2>
           </a>
+        </div>
 
-          <a href={links} target="_blank" className={styles.card} rel="noreferrer">
-            <h2>🔍 검색하기</h2>
+        <div className={styles.grid2}>
+          <a href={links} target="_blank" className={styles.card2} rel="noreferrer">
+            <h2><LocationLottie></LocationLottie>찾아보기</h2>
           </a>
-          <a onClick={clickHandlerKakao} className={styles.card}>
-            <h2>💬 공유하기</h2>
+          <a onClick={clickHandlerKakao} className={styles.card2}>
+            <h2><ShareLottie></ShareLottie>알려주기</h2>
           </a>
         </div>
       </main>

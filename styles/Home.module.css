@@ -2,7 +2,7 @@
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -14,7 +14,8 @@
   width: 100vw;
   overflow: hidden;
   z-index: -1;
-  filter: contrast(60%);
+  /* filter: contrast(80%); */
+  opacity: 0.4;
 }
 
 .main {
@@ -54,52 +55,91 @@
 }
 
 .title {
+  color: #363967;
   margin: 1rem;
   line-height: 1.15;
-  font-size: 3.7rem;
-  text-shadow: 4px 2px 2px gray;
+  font-size: 3.5rem;
+  /* text-shadow: 4px 2px 2px gray; */
   text-align: center;
 }
 
 .item {
-  color: rgb(231, 227, 227);
-  margin: 2rem 0 0 0;
+  font-weight: bold;
+  color: #D74F24;
+  margin: 1.2rem;
   cursor: pointer;
   /* border: 3px dotted #050505; */
   /* border-radius: 5px; */
-  font-size: 3rem;
+  font-size: 4.5rem;
   /* font-style: oblique; */
-  text-shadow: 4px 2px 2px rgb(36, 36, 36);
+  /* text-shadow: 4px 2px 2px rgb(36, 36, 36); */
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
+.grid1 {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
-  margin-top: 3rem;
+  margin-top: 7rem;
 }
 
-.card {
-  color: black;
-  margin: 1rem;
-  padding: 1.1rem;
-  text-align: left;
+.grid2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin-top: 1rem;
+}
+
+.card1 {
+  background-color: white;
+  color: #363967;
+  /* margin: 1rem; */
+  margin: 0px auto;
+  padding: 0 1.5rem;
+  text-align: center;
   text-decoration: none;
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 2px solid white;
+  border-radius: 30px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
+  /* width: 200%; */
+  /* top: 30%; */
+  /* left: 10%; */
+  /* position: relative; */
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.card2 {
+  background-color: white;
+  color: #363967;
+  margin: 1rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid white;
+  border-radius: 30px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  /* position: relative; */
+  /* width: 45%; */
+}
+
+.card1:hover,
+.card1:focus,
+.card1:active {
+  color: #D74F24;
+  border-color: #D74F24;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.card2:hover,
+.card2:focus,
+.card2:active {
+  color: #D74F24;
+  border-color: #D74F24;
   cursor: pointer;
   vertical-align: middle;
 }
