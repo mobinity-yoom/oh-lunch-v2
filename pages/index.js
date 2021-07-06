@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import styles from '../styles/Home.module.css'
 import { shareKakao } from '../lib/kakao/shareKakao';
+import translator from "../lib/Translator";
+
 // import { Loading } from '../lib/loadingSpinner';
 // import initialize from '../lib/kakao/initialize';
 // import AnimationButton from './animation';
@@ -16,13 +18,11 @@ const NoSSRComponent = dynamic(() => import("./slotMachine"), {
 });
 
 export default function Home() {
-
   var menuList = ["갈비찜", "국밥", "국수", "김밥", "김치볶음밥", "김치찜", "냉면", "닭갈비",
-                  "닭볶음탕", "도시락", "돈까스", "떡볶이", "라멘", "라면", "리조또", "보쌈", "볶음밥",
+                  "닭볶음탕", "도시락", "돈까스", "떡볶이", "라멘", "라면", "리소토", "보쌈", "볶음밥",
                   "분식", "불고기", "비빔밥", "삼계탕", "샌드위치", "생선구이", "수제비", "순대", "스테이크", "쌀국수", "알밥", "양꼬치", "연어덮밥", "우동", "월남쌈", "제육볶음",
                   "짬뽕", "쭈꾸미", "찌개", "찜닭", "초밥", "추어탕", "치킨", "칼국수", "타코", "탕수육", "파스타", "팟타이", "피자", "한정식", "해장국", "햄버거"
-                ]
-
+                ]  
   useEffect(() => {
     // useEffect() 는 초기 빌드에는 실행되지 않으므로
     // 처음 ssr시에는 window 객체를 불러오지 않도록
@@ -37,13 +37,17 @@ export default function Home() {
 
   const clickHandler = () => {
     setLoading(true);
-    var selected = menuList[Math.floor(Math.random() * menuList.length)];
+    const selected = menuList[Math.floor(Math.random() * menuList.length)];
     setItems(selected);
-    var selectedLink = "https://map.naver.com/v5/search/" + selected;
+    console.log("setItem finished")
+    const selectedLink = "https://map.naver.com/v5/search/" + selected;
     setLinks(selectedLink);
-    var selectedImg = "/imgs/" + selected + ".jpg"
+    console.log("setLink finished")
+    const selectedImg = "/imgs/" + translator(selected) + ".jpg"
     setImgs(selectedImg);
+    console.log("setImgs finished")
     // setTimeout(setLoading(false), 300);
+    setLoading(false);
   }
 
   const clickHandlerKakao = () => {
@@ -53,7 +57,7 @@ export default function Home() {
       shareKakao(items, links);
     }
   }
-  console.log("imgs,", links);
+  // console.log("imgs,", links);
   return (
     <div className={styles.container}>
       <Head>
@@ -75,7 +79,14 @@ export default function Home() {
         </div>
 
         <div className={styles.bgWrap}>
-          <Image src={imgs} alt={items} layout="fill" objectFit="cover" quality={100}></Image>
+          <Image 
+            src={imgs}
+            alt={items}
+            layout="fill"
+            objectFit="cover"
+            // quality={25}
+            priority
+          ></Image>
         </div>
 
         <div className={styles.grid}>
