@@ -77,7 +77,7 @@
   /* border-radius: 5px; */
   font-size: 4.5rem;
   /* font-style: oblique; */
-  /* text-shadow: 4px 2px 2px rgb(36, 36, 36); */
+  text-shadow: 4px 2px 2px #F7F7F7;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
