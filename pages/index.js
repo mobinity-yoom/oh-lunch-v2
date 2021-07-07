@@ -96,14 +96,14 @@ export default function Home() {
         </h1>
 
         <div className={styles.bgWrap}>
-          <Image 
+          <img 
             src={imgs}
             alt={items}
             layout="fill"
             objectFit="cover"
             // quality={25}
             priority
-          ></Image>
+          ></img>
         </div>
         
         {items !== "???" && <>
