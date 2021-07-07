@@ -1,0 +1,35 @@
+runtime: nodejs14
+instance_class: F2
+service: default
+
+handlers:
+  - url: /static/js/(.*)
+    static_files: build/static/js/\1
+    upload: build/static/js/(.*)
+    secure: always
+    script: auto
+  - url: /static/css/(.*)
+    static_files: build/static/css/\1
+    upload: build/static/css/(.*)
+    secure: always
+    script: auto
+  - url: /static/media/(.*)
+    static_files: build/static/media/\1
+    upload: build/static/media/(.*)
+    secure: always
+    script: auto
+  - url: /(.*\.(json|ico))$
+    static_files: build/\1
+    upload: build/.*\.(json|ico)$
+    secure: always
+    script: auto
+  - url: /
+    static_files: build/index.html
+    upload: build/index.html
+    secure: always
+    script: auto
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+    secure: always
+    script: auto
