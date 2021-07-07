@@ -99,8 +99,8 @@ export default function Home() {
           <img 
             src={imgs}
             alt={items}
-            layout="fill"
-            objectFit="cover"
+            // layout="fill"
+            // objectFit="cover"
             // quality={25}
             priority
           ></img>
