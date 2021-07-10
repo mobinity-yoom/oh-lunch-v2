@@ -52,7 +52,7 @@ export default function Home() {
     const selectedLink = "https://map.naver.com/v5/search/" + selected;
     setLinks(selectedLink);
     console.log("setLink finished")
-    const selectedImg = "/imgs/" + translator(selected) + ".jpg"
+    const selectedImg = `https://storage.googleapis.com/oh_lunch_pics/${translator(selected)}.jpg`
     setImgs(selectedImg);
     console.log("setImgs finished")
     // setTimeout(setLoading(false), 300);
@@ -99,11 +99,14 @@ export default function Home() {
           <img 
             src={imgs}
             alt={items}
-            // layout="fill"
-            // objectFit="cover"
-            // quality={25}
-            priority
           ></img>
+          {/* <Image 
+            src={imgs}
+            alt={items}
+            layout="fill"
+            objectFit="cover"
+            priority
+          ></Image> */}
         </div>
         
         {items !== "???" && <>
