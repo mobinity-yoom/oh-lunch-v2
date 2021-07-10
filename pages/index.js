@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import styles from '../styles/Home.module.css'
 import { shareKakao } from '../lib/kakao/shareKakao';
@@ -11,7 +11,7 @@ import translator from "../lib/Translator";
 // import AnimationButton from './animation';
 
 // for lotties
-import Lottie from 'react-lottie';
+// import Lottie from 'react-lottie';
 import ReloadLottie from '../lib/lottie/reload';
 import LocationLottie from '../lib/lottie/location';
 import ShareLottie from '../lib/lottie/share';
@@ -19,10 +19,10 @@ import ClickLottie from '../lib/lottie/click';
 
 const isServer = () => typeof window === 'undefined';
 
-const NoSSRComponent = dynamic(() => import("./slotMachine"), {
-  loading: () => <p>.....</p>,
-  ssr: false,
-});
+// const NoSSRComponent = dynamic(() => import("./slotMachine"), {
+//   loading: () => <p>.....</p>,
+//   ssr: false,
+// });
 
 export default function Home() {
   var menuList = ["갈비찜", "국밥", "국수", "김밥", "김치볶음밥", "김치찜", "냉면", "닭갈비",
