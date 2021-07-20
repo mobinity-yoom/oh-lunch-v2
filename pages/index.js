@@ -26,9 +26,9 @@ const isServer = () => typeof window === 'undefined';
 
 export default function Home() {
   var menuList = ["갈비찜", "국밥", "국수", "김밥", "김치볶음밥", "김치찜", "냉면", "닭갈비",
-                  "닭볶음탕", "도시락", "돈까스", "떡볶이", "라멘", "라면", "리소토", "보쌈", "볶음밥",
-                  "분식", "불고기", "비빔밥", "삼계탕", "샌드위치", "생선구이", "수제비", "순대", "스테이크", "쌀국수", "알밥", "양꼬치", "연어덮밥", "우동", "월남쌈", "제육볶음",
-                  "짬뽕", "쭈꾸미", "찌개", "찜닭", "초밥", "추어탕", "치킨", "칼국수", "타코", "탕수육", "파스타", "팟타이", "피자", "한정식", "해장국", "햄버거"
+                  "닭볶음탕", "도시락", "돈까스", "라멘", "라면", "리소토", "보쌈", "볶음밥",
+                  "분식", "불고기", "비빔밥", "삼계탕", "샌드위치", "생선구이", "수제비",  "스테이크", "쌀국수", "알밥", "양꼬치", "연어덮밥", "우동", "월남쌈", "제육볶음",
+                  "짬뽕", "쭈꾸미", "찌개", "찜닭", "초밥", "추어탕", "치킨", "칼국수", "타코", "탕수육", "파스타", "팟타이", "피자", "한정식", "해장국", "햄버거" //"순대","떡볶이",
                 ]  
   useEffect(() => {
     // useEffect() 는 초기 빌드에는 실행되지 않으므로
@@ -52,7 +52,7 @@ export default function Home() {
     const selectedLink = "https://map.naver.com/v5/search/" + selected;
     setLinks(selectedLink);
     console.log("setLink finished")
-    const selectedImg = `https://storage.googleapis.com/oh_lunch_pics/${translator(selected)}.jpg`
+    const selectedImg = `${process.env.IMAGE_URL}${translator(selected)}.jpg`
     setImgs(selectedImg);
     console.log("setImgs finished")
     // setTimeout(setLoading(false), 300);
