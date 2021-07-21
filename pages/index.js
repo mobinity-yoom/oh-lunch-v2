@@ -63,10 +63,10 @@ export default function Home() {
     if (typeof window != 'undefined') {
       // const title = items;
       // const sharelink = links;
-      shareKakao(items, links);
+      shareKakao(items, links, imgs);
     }
   }
-  // console.log("imgs,", links);
+  // console.log("imgs,", imgs);
   return (
     <div className={styles.container}>
       <Head>
@@ -96,7 +96,7 @@ export default function Home() {
         </h1>
 
         <div className={styles.bgWrap}>
-          <img 
+          <img className={styles.bgWrap}
             src={imgs}
             alt={items}
           ></img>
@@ -128,18 +128,19 @@ export default function Home() {
         }
       </main>
 
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+      <footer className={styles.footer}>
+        <a>Powered by &nbsp;{' '}</a>
+          <span
+            href="https://info.oh-lunch.com/"
+            target="_blank">
+              <img src="/logo.png" alt="Logo" width={40} height={40} />
           </span>
-        </a>
-      </footer> */}
+          <span
+            href="https://mobinity.io/"
+            target="_blank">
+              <img src="/moby.png" alt="Logo" width={40} height={40} />
+          </span>
+      </footer>
     </div>
   );
 }
