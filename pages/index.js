@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head'
-// import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import styles from '../styles/Home.module.css'
 import { shareKakao } from '../lib/kakao/shareKakao';
 import translator from "../lib/Translator";
-
+import * as ga from "../lib/ga";
 // import { Loading } from '../lib/loadingSpinner';
 // import initialize from '../lib/kakao/initialize';
 // import AnimationButton from './animation';
@@ -47,6 +46,15 @@ export default function Home() {
     // SetIsPaused(!isPaused);
     setLoading(true);
     const selected = menuList[Math.floor(Math.random() * menuList.length)];
+    if ( items !== "???") { // * 첫 메뉴 고르기가 아니라면..
+      ga.event({
+        action: "한번더 버튼 클릭",
+        params: {
+          event_category : "한번더 클릭 전 메뉴",
+          event_label : items
+        }
+      })
+    }
     setItems(selected);
     console.log("setItem finished")
     const selectedLink = "https://map.naver.com/v5/search/" + selected;
@@ -60,6 +68,13 @@ export default function Home() {
   }
 
   const clickHandlerKakao = () => {
+    ga.event({
+      action: "공유 버튼 클릭",
+      params: {
+        event_category: "공유한 메뉴",
+        event_label : items
+      }
+    })
     if (typeof window != 'undefined') {
       // const title = items;
       // const sharelink = links;
@@ -117,7 +132,15 @@ export default function Home() {
           </div>
 
           <div className={styles.grid2}>
-            <a href={links} target="_blank" className={styles.card2} rel="noreferrer">
+            <a href={links} target="_blank" className={styles.card2} rel="noreferrer" 
+              onClick={()=>{
+                ga.event({ 
+                action: "찾아보기 버튼 클릭",
+                params: {
+                  event_category : "지도에서 찾아본 메뉴",
+                  event_label : items
+                }})}}
+            >
               <h2><LocationLottie></LocationLottie>찾아보기</h2>
             </a>
             <a onClick={clickHandlerKakao} className={styles.card2}>
