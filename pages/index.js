@@ -38,7 +38,7 @@ export default function Home() {
   // [state(ui 바뀌는)변수, 해당 변수를 갱신하는 함수]
   const [items, setItems] = useState('???');
   const [links, setLinks] = useState("https://map.naver.com/v5/search/");
-  const [imgs, setImgs] = useState("/logo.png");
+  const [imgs, setImgs] = useState("/logo_back.JPG");
   const [loading, setLoading] = useState(false);
   // const [isPaused, SetIsPaused] = useState(false);
 
@@ -152,17 +152,17 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <a>Powered by &nbsp;{' '}</a>
-          <span
+        <a>Powered by &nbsp;{' '}{' '}</a>
+          <a
             href="https://info.oh-lunch.com/"
             target="_blank">
               <img src="/logo.png" alt="Logo" width={40} height={40} />
-          </span>
-          <span
+          </a>
+          <a
             href="https://mobinity.io/"
             target="_blank">
               <img src="/moby.png" alt="Logo" width={40} height={40} />
-          </span>
+          </a>
       </footer>
     </div>
   );
