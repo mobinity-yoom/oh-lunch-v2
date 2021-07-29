@@ -60,12 +60,6 @@ export default function Home() {
     }
     setItems(selected);
     console.log("setItem finished")
-
-    // router push
-    // router.push(
-    //   `/?menu=${selected}`
-    // );
-
     const selectedLink = "https://map.naver.com/v5/search/" + selected;
     setLinks(selectedLink);
     console.log("setLink finished")
